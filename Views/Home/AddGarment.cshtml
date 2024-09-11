@@ -1,0 +1,44 @@
+﻿@model Online_Laundry_Management_System.Models.Garments
+@{
+    ViewBag.Title = "Add Garment";
+}
+<div class="page-header">
+    <h3 class="page-title"> Add Garment </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item">Garments</li>
+            <li class="breadcrumb-item active" aria-current="page">Add Garment</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Add Garment
+                </h4>
+                <form class="forms-sample" method="post">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Garment</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Shirt" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Weight</label>
+                            @Html.TextBoxFor(model => model.Weight, new { @class = "form-control", placeholder = "200" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Rate</label>
+                            @Html.TextBoxFor(model => model.Rate, new { @class = "form-control", placeholder = "70" })
+                        </div>
+                        <button type="submit" class="btn btn-success me-2">Add</button>
+                        <a class="btn btn-danger" href="@Url.Action("Index","Home")">Cancel</a>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

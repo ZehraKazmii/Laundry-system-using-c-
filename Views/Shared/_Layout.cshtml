@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="~/Vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Vendors/css/vendor.bundle.base.css">
+    <link rel="shortcut icon" href="~/Images/favicon.png" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container-scroller">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo text-light" href="@Url.Action("Index", "Home")">Online Laundry</a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <div class="search-field d-none d-xl-block">
+                    <form class="d-flex align-items-center h-100" action="#">
+                        <div class="input-group">
+                            <div class="input-group-prepend bg-transparent">
+                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                            </div>
+                            <input type="text" class="form-control bg-transparent border-0" placeholder="Search Customer">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-monitor-dashboard"></i></span>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">People</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#customers" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="icon-bg"><i class="mdi mdi-account-group"></i></span>
+                            <span class="menu-title">Customers</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="customers">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("AddCustomer", "Home")">Add New Customer</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("AllCustomers", "Home")">All Customers</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-category">Garments And Payments</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#garments" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="icon-bg"><i class="mdi mdi-tshirt-crew"></i></span>
+                            <span class="menu-title">Garments</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="garments">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("AddGarment", "Home")">Add New Garment</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("AllGarments", "Home")">All Garments</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewPayment", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-monitor-dashboard"></i></span>
+                            <span class="menu-title">New Payment</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("PaymentHistory", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-monitor-dashboard"></i></span>
+                            <span class="menu-title">Payment History</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("PaymentTypes", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-cash-100"></i></span>
+                            <span class="menu-title">All Payment Types</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Invoices</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewInvoice", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-monitor-dashboard"></i></span>
+                            <span class="menu-title">Create New Invoice</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("AllInvoices", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-monitor-dashboard"></i></span>
+                            <span class="menu-title">All Invoices</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("InvoiceTypes", "Home")">
+                            <span class="icon-bg"><i class="mdi mdi-receipt-text-outline"></i></span>
+                            <span class="menu-title">All Invoice Types</span>
+                        </a>
+                    </li>
+               
+                    <li class="nav-item sidebar-user-actions">
+                        <div class="sidebar-user-menu">
+                            <a href="@Url.Action("About", "Home")" class="nav-link">
+                                <i class="mdi mdi-logout menu-icon"></i>
+                                <span class="menu-title">Log Out</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderBody()
+                </div>
+                <footer>
+                    <p class="text-center">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @Scripts.Render("~/bundles/custom")
+            @RenderSection("scripts", required: false)
+</body>
+</html>

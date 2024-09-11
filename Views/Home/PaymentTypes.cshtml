@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Payment Types";
+}
+<div class="page-header">
+    <h3 class="page-title">Payment Types</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Payment Types</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th> Sr.No </th>
+                            <th> Payment Type </th>
+                            <th> Remove </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int counter = 1;
+                        }
+                        @foreach (var pType in Model)
+                        {
+                            <tr>
+                                <td>@counter</td>
+                                <td>@pType.Type</td>
+                                <td>
+                                    <a href="@Url.Action("DeletePaymentType", "Home", new { PayTypeId = pType.Id })" class="btn btn-outline-danger">Remove</a>
+                                </td>
+                            </tr>
+                            counter++;
+                        }
+                    <tr>
+                        @using (Html.BeginForm("AddPaymentType", "Home", FormMethod.Post, new { @class = "form-inline" }))
+                        {
+                            <td><label for="Type">New Payment Type</label></td>
+                            <td><input name="Type" id="Type" class="form-control-sm bg-transparent border-1" type="text"/></td>
+                            <td><input type="submit" value="Add" class="btn btn-outline-success" /></td>
+                        }
+                    </tr>
+                    </tbody>
+                </table>`
+            </div>
+        </div>
+    </div>
+</div>

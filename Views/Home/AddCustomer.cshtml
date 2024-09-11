@@ -1,0 +1,49 @@
+﻿@model Online_Laundry_Management_System.Models.Customer
+@{
+    ViewBag.Title = "Add Customer";
+}
+<div class="page-header">
+    <h3 class="page-title"> Add Customer </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item">Customers</li>
+            <li class="breadcrumb-item active" aria-current="page">Add Customer</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Add Customer
+                </h4>
+                <form class="forms-sample" method="post">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Customer Name</label>
+                            @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control", placeholder = "Javed" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email Address</label>
+                            @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "form-control", placeholder = "name@example.com" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Whatsapp</label>
+                            @Html.TextBoxFor(model => model.CustomerWhatsapp, new { @class = "form-control", placeholder = "3331231231" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleAddress">Address</label>
+                            @Html.TextAreaFor(model => model.CustomerAddress, new { @class = "form-control", placeholder = "Flat#1,North Nazimabad,Hyderi,Block E,Karachi" }) <!-- Prepopulate Address field -->
+                        </div>
+
+                        <button type="submit" class="btn btn-success me-2">Add</button>
+                        <a class="btn btn-danger" href="@Url.Action("Index","Home")">Cancel</a>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

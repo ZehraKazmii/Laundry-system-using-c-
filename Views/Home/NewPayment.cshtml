@@ -1,0 +1,47 @@
+﻿@model Online_Laundry_Management_System.Models.PaymentIn
+@{
+    ViewBag.Title = "New Payments";
+}
+<div class="page-header">
+    <h3 class="page-title"> Add Payment </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">New Payments</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    New Payment
+                </h4>
+                <form class="forms-sample" method="post">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+                            <label for="CustomerId">Customer</label>
+                            @Html.DropDownList("CustomerId", ViewBag.Customers as List<SelectListItem>, "-- Select Customer --", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InvoiceId">Invoice</label>
+                            @{
+                                var selectedCustomerId = Request.Form["CustomerId"]?.ToString();
+                                var customerInvoices = selectedCustomerId != null ? ViewBag.CustomerInvoices[selectedCustomerId] as List<SelectListItem> : new List<SelectListItem>();
+                            }
+                            @Html.DropDownList("InvoiceId", customerInvoices, "-- Select Invoice --", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="PaymentTypeId">Payment Type</label>
+                            @Html.DropDownList("PaymentTypeId", ViewBag.PaymentTypes as List<SelectListItem>, "-- Select Payment Type --", new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-success me-2">Add</button>
+                        <a class="btn btn-danger" href="@Url.Action("Index","Home")">Cancel</a>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
